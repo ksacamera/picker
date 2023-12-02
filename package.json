@@ -37,5 +37,5 @@
     "npm-check-updates": "^16.14.11",
     "prisma": "^5.6.0"
   },
-  "proxy": "http://localhost:3007"
+  "proxy": "http://localhost:3005"
 }
