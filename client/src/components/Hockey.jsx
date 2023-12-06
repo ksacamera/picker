@@ -6,6 +6,7 @@ import axios from "axios";
 const Hockey = () => {
   const [brands, setBrands] = useState([]);
   const [stickModels, setStickModels] = useState([]);
+  const [kickpoints, setKickpoints] = useState([]);
 
   useEffect(() => {
     // Make a GET request to fetch brands
@@ -17,7 +18,31 @@ const Hockey = () => {
       .catch((error) => {
         console.error("Error fetching brands:", error);
       });
+
+      axios
+      .get("/api/stickModels")
+      .then((response) => {
+        setStickModels(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching stick models:", error);
+      });
+
+      axios
+      .get("/api/kickpoints")
+      .then((response) => {
+        setKickpoints(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching kickpoints:", error);
+      });
+
   }, []);
+
+  const getKickpointName = (kickpointID) => {
+    const kickpoint = kickpoints.find((kp) => kp.KickPointID === kickpointID);
+    return kickpoint ? kickpoint.KickPointName : "Unknown Kickpoint";
+  };
 
   return (
     <>
@@ -38,6 +63,15 @@ const Hockey = () => {
               style={{ width: "100px", height: "auto" }}
             />
             {brand.BrandName}
+          </li>
+        ))}
+      </ul>
+
+      <h2>Stick Models</h2>
+      <ul>
+        {stickModels.map((stickModel) => (
+          <li key={stickModel.ModelID}>
+            <strong>{stickModel.ModelName}</strong> by {stickModel.Brand ? stickModel.Brand.BrandName : "Unknown Brand"} - Kickpoint: {getKickpointName(stickModel.KickPointID)}
           </li>
         ))}
       </ul>
