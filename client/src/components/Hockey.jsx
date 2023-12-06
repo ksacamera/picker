@@ -5,11 +5,12 @@ import axios from "axios";
 
 const Hockey = () => {
   const [brands, setBrands] = useState([]);
+  const [stickModels, setStickModels] = useState([]);
 
   useEffect(() => {
     // Make a GET request to fetch brands
     axios
-      .get("/api/brands") // Adjust the URL as needed
+      .get("/api/brands")
       .then((response) => {
         setBrands(response.data);
       })
@@ -29,8 +30,15 @@ const Hockey = () => {
 
       <h2>Brands:</h2>
       <ul>
-        {brands.map((brand) => (
-          <li key={brand.BrandID}>{brand.BrandName}</li>
+      {brands.map((brand) => (
+          <li key={brand.BrandID}>
+            <img
+              src={brand.avatar}
+              alt={`${brand.BrandName} Avatar`}
+              style={{ width: "100px", height: "auto" }}
+            />
+            {brand.BrandName}
+          </li>
         ))}
       </ul>
     </>
