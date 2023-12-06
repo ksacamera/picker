@@ -10,7 +10,12 @@ const prisma = new PrismaClient();
 // Route to fetch stick models
 router.get("/", async (req, res) => {
   try {
-    const stickModels = await prisma.model.findMany();
+    const stickModels = await prisma.model.findMany({
+      include: {
+        Brand: true,       // Include the related Brand information
+        KickPoint: true,   // Include the related KickPoint information
+      },
+  });
     res.send(stickModels);
   } catch (error) {
     console.error("Error fetching Stick Models:", error);
