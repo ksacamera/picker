@@ -7,7 +7,7 @@ const App = () => {
 
   return (
     <>
-     <h1>WELCOME</h1>
+    
      <Router />
     </>
   )
