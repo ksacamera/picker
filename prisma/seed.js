@@ -665,6 +665,7 @@ const main = async () => {
           KickPointID: 1, // LOW KICK
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/e/a/easton-hockey-stick-synergy-s23-sr.jpg",
     },
   });
 
@@ -681,12 +682,13 @@ const main = async () => {
           KickPointID: 1, // LOW KICK
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/b/a/bauer-hockey-stick-ag5nt-gr-sr_1.jpg",
     },
   });
 
   const nexusModel = await prisma.model.create({
     data: {
-      ModelName: "Nexus",
+      ModelName: "Nexus Sync",
       Brand: {
         connect: {
           BrandID: 1,
@@ -697,12 +699,13 @@ const main = async () => {
           KickPointID: 2,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/b/a/bauer-hockey-stick-nexus-sync-sr.jpg",
     },
   });
 
   const supremeModel = await prisma.model.create({
     data: {
-      ModelName: "Supreme",
+      ModelName: "Supreme Ultrasonic",
       Brand: {
         connect: {
           BrandID: 1,
@@ -713,6 +716,7 @@ const main = async () => {
           KickPointID: 2,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/b/a/bauer-hockey-stick-supreme-ultrasonic-black-sr_1.jpg",
     },
   });
 
@@ -729,6 +733,7 @@ const main = async () => {
           KickPointID: 2,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/b/a/bauer-hockey-stick-proto-r-sr_1.jpg",
     },
   });
 
@@ -746,12 +751,13 @@ const main = async () => {
           KickPointID: 3,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/c/c/ccm-hockey-stick-jetspeed-ft6-pro-sr.jpg",
     },
   });
 
   const ribcorModel = await prisma.model.create({
     data: {
-      ModelName: "Ribcor",
+      ModelName: "Ribcor Trigger 8",
       Brand: {
         connect: {
           BrandID: 2,
@@ -762,12 +768,13 @@ const main = async () => {
           KickPointID: 1,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/c/c/ccm-hockey-stick-ribcor-trigger-8-pro-sr_2.jpg",
     },
   });
 
   const tacksModel = await prisma.model.create({
     data: {
-      ModelName: "Tacks",
+      ModelName: "Tacks AS-VI Pro",
       Brand: {
         connect: {
           BrandID: 2,
@@ -778,6 +785,7 @@ const main = async () => {
           KickPointID: 2,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/1/9/191520610340-1_37.jpg",
     },
   });
 
@@ -794,13 +802,14 @@ const main = async () => {
           KickPointID: 3,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/c/c/ccm-hockey-stick-ft-ghost-sr_1.jpg",
     },
   });
 
   //// WARRIOR MODELS (ID:3)
   const alphaModel = await prisma.model.create({
     data: {
-      ModelName: "Alpha",
+      ModelName: "Alpha LX2 Pro",
       Brand: {
         connect: {
           BrandID: 3,
@@ -811,12 +820,13 @@ const main = async () => {
           KickPointID: 3,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/w/a/warrior-hockey-stick-alpha-lx2-pro-sr_1.jpg",
     },
   });
 
   const covertModel = await prisma.model.create({
     data: {
-      ModelName: "Covert",
+      ModelName: "Covert QR5 Pro",
       Brand: {
         connect: {
           BrandID: 3,
@@ -827,12 +837,13 @@ const main = async () => {
           KickPointID: 1,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/w/a/warrior-hockey-stick-covert-qr5-pro-sr_1.jpg",
     },
   });
 
   const noviumModel = await prisma.model.create({
     data: {
-      ModelName: "Novium",
+      ModelName: "Novium Pro",
       Brand: {
         connect: {
           BrandID: 3,
@@ -843,13 +854,14 @@ const main = async () => {
           KickPointID: 2,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/w/a/warrior-hockey-stick-novium-pro-sr_1.jpg",
     },
   });
 
   //// TRUE MODELS (ID:4)
   const catalystModel = await prisma.model.create({
     data: {
-      ModelName: "Catalyst",
+      ModelName: "Catalyst 9X3",
       Brand: {
         connect: {
           BrandID: 4,
@@ -860,12 +872,13 @@ const main = async () => {
           KickPointID: 2,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/t/r/true-hockey-stick-catalyst-9x3-sr_1.jpg",
     },
   });
 
   const hzrdusModel = await prisma.model.create({
     data: {
-      ModelName: "HZRDUS",
+      ModelName: "HZRDUS PX",
       Brand: {
         connect: {
           BrandID: 4,
@@ -876,6 +889,7 @@ const main = async () => {
           KickPointID: 1,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/t/r/true-hockey-stick-hzrdus-px-gr-sr_1.jpg",
     },
   });
 
@@ -892,13 +906,14 @@ const main = async () => {
           KickPointID: 1,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/6/8/681489143039-1_24.jpg",
     },
   });
 
   //// SHERWOOD (ID:5)
   const codeModel = await prisma.model.create({
     data: {
-      ModelName: "Code",
+      ModelName: "Code TMP Pro",
       Brand: {
         connect: {
           BrandID: 5,
@@ -909,12 +924,13 @@ const main = async () => {
           KickPointID: 3,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/s/h/sherwood-hockey-stick-code-tmp-pro-sr-prtn_1.jpg",
     },
   });
 
   const rekkerModel = await prisma.model.create({
     data: {
-      ModelName: "Rekker",
+      ModelName: "REKKER Legend Pro Return",
       Brand: {
         connect: {
           BrandID: 5,
@@ -925,6 +941,7 @@ const main = async () => {
           KickPointID: 1,
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/s/h/sherwood-hockey-stick-rekker-legend-pro-sr-prtn_1.jpg",
     },
   });
 
