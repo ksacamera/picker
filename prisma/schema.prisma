@@ -72,6 +72,7 @@ model Model {
   KickPointID Int
   variants    Variant[] // One-to-many relationship with Stick Model Variants
   image       String?   // New field for storing the image URL
+  slug        String?   // New field for storing the slug
 }
 
 // Stick Model Variants table

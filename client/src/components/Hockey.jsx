@@ -47,7 +47,7 @@ const Hockey = () => {
   };
 
   const handleStickClick = (stickModel) => {
-    navigate(`/stick/${stickModel.ModelID}`, { state: { stickModel } });
+    navigate(`/stick/${stickModel.slug}`, { state: { stickModel } });
   };
 
   return (

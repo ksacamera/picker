@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/stick-picker" element={<MyStickPicker />} />
 
-        <Route path="/stick/:id" element={<StickDetail />} />
+        <Route path="/stick/:slug" element={<StickDetail />} />
 
       </Routes>
     </>
