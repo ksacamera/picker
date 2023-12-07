@@ -19,7 +19,7 @@ const Hockey = () => {
         console.error("Error fetching brands:", error);
       });
 
-      axios
+    axios
       .get("/api/stickModels")
       .then((response) => {
         setStickModels(response.data);
@@ -28,7 +28,7 @@ const Hockey = () => {
         console.error("Error fetching stick models:", error);
       });
 
-      axios
+    axios
       .get("/api/kickpoints")
       .then((response) => {
         setKickpoints(response.data);
@@ -36,7 +36,6 @@ const Hockey = () => {
       .catch((error) => {
         console.error("Error fetching kickpoints:", error);
       });
-
   }, []);
 
   const getKickpointName = (kickpointID) => {
@@ -55,7 +54,7 @@ const Hockey = () => {
 
       <h2>Brands:</h2>
       <ul>
-      {brands.map((brand) => (
+        {brands.map((brand) => (
           <li key={brand.BrandID}>
             <img
               src={brand.avatar}
@@ -71,7 +70,12 @@ const Hockey = () => {
       <ul>
         {stickModels.map((stickModel) => (
           <li key={stickModel.ModelID}>
-            <strong>{stickModel.ModelName}</strong> by {stickModel.Brand ? stickModel.Brand.BrandName : "Unknown Brand"} - Kickpoint: {getKickpointName(stickModel.KickPointID)}
+            <strong>
+              {stickModel.Brand
+                ? `${stickModel.Brand.BrandName} ${stickModel.ModelName}`
+                : "Unknown Brand"}
+            </strong>{" "}
+            - Kickpoint: {getKickpointName(stickModel.KickPointID)}
           </li>
         ))}
       </ul>
