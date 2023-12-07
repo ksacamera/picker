@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import pickerbanner from "./images/pickerbanner.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Hockey = () => {
   const [brands, setBrands] = useState([]);
   const [stickModels, setStickModels] = useState([]);
   const [kickpoints, setKickpoints] = useState([]);
+  const [selectedStick, setSelectedStick] = useState(null);
 
   useEffect(() => {
     // Make a GET request to fetch brands
@@ -43,14 +45,25 @@ const Hockey = () => {
     return kickpoint ? kickpoint.KickPointName : "Unknown Kickpoint";
   };
 
+  const handleStickClick = (stickModel) => {
+    setSelectedStick(stickModel);
+  };
+
   return (
     <>
+    <Link to="/">
       <img
         src={pickerbanner}
         alt="Picker Banner"
-        style={{ width: "350px", height: "auto" }}
+        style={{ width: "550px", height: "auto" }}
       />
+      </Link>
+
       <h1>Hockey Page</h1>
+
+      <Link to="/stick-picker">
+      <h2>Stick Picker</h2>
+      </Link>
 
       <h2>Brands:</h2>
       <ul>
@@ -69,7 +82,7 @@ const Hockey = () => {
       <h2>Stick Models</h2>
       <ul>
         {stickModels.map((stickModel) => (
-          <li key={stickModel.ModelID}>
+          <li key={stickModel.ModelID} onClick={() => handleStickClick(stickModel)}>
             <strong>
               {stickModel.Brand
                 ? `${stickModel.Brand.BrandName} ${stickModel.ModelName}`
