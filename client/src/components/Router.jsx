@@ -4,7 +4,7 @@ import Golf from "./Golf";
 import Hockey from "./Hockey";
 import Profile from "./Profile";
 import MyStickPicker from "./MyStickPicker";
-// import StickDetail from "./StickDetail";
+import StickDetail from "./StickDetail";
 
 const Router = () => {
   return (
@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/stick-picker" element={<MyStickPicker />} />
 
-        {/* <Route path="/stick/:id" element={<StickDetail />} /> */}
+        <Route path="/stick/:id" element={<StickDetail />} />
 
       </Routes>
     </>
