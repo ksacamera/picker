@@ -76,6 +76,14 @@ const Hockey = () => {
                 : "Unknown Brand"}
             </strong>{" "}
             - Kickpoint: {getKickpointName(stickModel.KickPointID)}
+
+            {stickModel.image && (
+              <img
+                src={stickModel.image}
+                alt={`${stickModel.Brand.BrandName} ${stickModel.ModelName}`}
+                style={{ width: "300px", height: "auto", marginTop: "10px" }}
+              />
+            )}
           </li>
         ))}
       </ul>

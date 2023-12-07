@@ -637,7 +637,7 @@ const main = async () => {
   /// BAUER MODELS (ID:1)
   const vaporModel = await prisma.model.create({
     data: {
-      ModelName: "Vapor",
+      ModelName: "Vapor Hyperlite 2",
       Brand: {
         connect: {
           BrandID: 1,
@@ -648,6 +648,7 @@ const main = async () => {
           KickPointID: 1, // LOW KICK
         },
       },
+      image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/b/a/bauer-hockey-stick-vapor-hyperlite-2-sr_1.jpg", 
     },
   });
 

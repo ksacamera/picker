@@ -71,6 +71,7 @@ model Model {
   KickPoint   KickPoint @relation(fields: [KickPointID], references: [KickPointID])
   KickPointID Int
   variants    Variant[] // One-to-many relationship with Stick Model Variants
+  image       String?   // New field for storing the image URL
 }
 
 // Stick Model Variants table
