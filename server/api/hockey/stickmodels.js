@@ -3,6 +3,7 @@ const router = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
 const { requireUser } = require("../utils"); 
 const { requireAdmin } = require("../utils");
+const slugify = require("slugify");
 
 // Initialize Prisma client
 const prisma = new PrismaClient();
@@ -26,11 +27,15 @@ router.get("/", async (req, res) => {
 });
 
 // Returns ONE Stick Model with specified ID
-router.get("/:id", requireUser, async (req, res) => {
+router.get("/:slug", requireUser, async (req, res) => {
   try {
     const stickModel = await prisma.model.findUnique({
       where: {
-        ModelID: Number(req.params.id),
+        slug: req.params.slug,
+      },
+      include: {
+        Brand: true,
+        KickPoint: true,
       },
     });
     if (!stickModel) {
@@ -47,12 +52,18 @@ router.get("/:id", requireUser, async (req, res) => {
 router.post("/", requireAdmin, async (req, res) => {
   try {
     // Extract Stick Model data from the request body
-    const { ModelName } = req.body;
+    const { ModelName, BrandID, KickPointID } = req.body;
+
+    // Create a slug from the model name
+    const slug = slugify(ModelName, { lower: true });
 
     // Create a new stick model in the database
     const newStickModel = await prisma.model.create({
       data: {
         ModelName,
+        BrandID,
+        KickPointID,
+        slug,
       },
     });
 
@@ -66,11 +77,11 @@ router.post("/", requireAdmin, async (req, res) => {
 });
 
 //Updates stick model with specified id
-router.put("/:id", requireAdmin, async (req, res) => {
+router.put("/:slug", requireAdmin, async (req, res) => {
   try {
     const stickModel = await prisma.model.update({
       where: {
-        ModelID: Number(req.params.id),
+        slug: req.params.slug,
       },
       data: req.body,
     });
@@ -85,11 +96,11 @@ router.put("/:id", requireAdmin, async (req, res) => {
 });
 
 // Route that deletes a stick model
-router.delete("/:id", requireAdmin, async (req, res) => {
+router.delete("/:slug", requireAdmin, async (req, res) => {
   try {
     const deletedStickModel = await prisma.model.delete({
       where: {
-        ModelID: Number(req.params.id),
+        slug: req.params.slug,
       },
     });
     if (!deletedStickModel) {

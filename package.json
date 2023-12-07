@@ -12,7 +12,7 @@
     "seed:dev": "npx prisma migrate reset && node ./prisma/seed.js",
     "seed": "npx prisma migrate deploy && node ./prisma/seed.js",
     "check-updates": "npm-check-updates -u",
-    "outdated": "npm outdated" 
+    "outdated": "npm outdated"
   },
   "author": "Kevin Anderson",
   "license": "ISC",
@@ -31,7 +31,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
     "path": "^0.12.7",
-    "react-redux": "^9.0.2"
+    "react-redux": "^9.0.2",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "npm-check-updates": "^16.14.11",
