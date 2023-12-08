@@ -4,6 +4,9 @@ const { PrismaClient } = require("@prisma/client");
 const { requireUser } = require("../utils"); 
 const { requireAdmin } = require("../utils");
 const slugify = require("slugify");
+const axios = require("axios");
+const cheerio = require("cheerio");
+
 
 // Initialize Prisma client
 const prisma = new PrismaClient();
@@ -15,6 +18,7 @@ router.get("/", async (req, res) => {
       include: {
         Brand: true,       // Include the related Brand information
         KickPoint: true,   // Include the related KickPoint information
+        prices: true, // Include the related Price information
       },
   });
     res.send(stickModels);
@@ -112,6 +116,8 @@ router.delete("/:slug", requireAdmin, async (req, res) => {
     res.send(error);
   }
 });
+
+
 
 // Don't forget to close the Prisma client when the server stops
 process.on("beforeExit", () => {

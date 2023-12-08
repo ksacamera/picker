@@ -1,5 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// npx prisma migrate dev --name init
+
 
 generator client {
   provider = "prisma-client-js"
@@ -62,7 +64,7 @@ model BladeCurve {
   variants         Variant[] // One-to-many relationship with Stick Model Variants
 }
 
-// Stick Models table (THIS SHOULD INCLUDE AN ITERATION LINE FOR FT6, FT5, FT GHOST...)
+// Stick Models table 
 model Model {
   ModelID     Int       @id @default(autoincrement())
   ModelName   String
@@ -73,6 +75,16 @@ model Model {
   variants    Variant[] // One-to-many relationship with Stick Model Variants
   image       String?   // New field for storing the image URL
   slug        String?   // New field for storing the slug
+  prices      Price[]   // One-to-many relationship with pricing information
+}
+
+model Price {
+  PriceID     Int       @id @default(autoincrement())
+  store       String    // Name of the store (e.g., PureHockey, HockeyMonkey, IceWarehouse, HockeyWorld)
+  price       Float     // Price of the stick in USD
+  url         String    // URL to the product page
+  model       Model     @relation(fields: [ModelID], references: [ModelID])
+  ModelID     Int
 }
 
 // Stick Model Variants table
@@ -100,3 +112,5 @@ model User {
   isAdmin   Boolean @default(false) @db.Boolean
   avatar    String  @db.Text
 }
+
+

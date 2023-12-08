@@ -8,31 +8,51 @@ const StickDetail = () => {
   const { state } = useLocation();
   const [stickModel, setStickModel] = useState(null);
 
+  const fetchStickModel = async (slug) => {
+    try {
+      const response = await axios.get(`/api/stickmodels/${slug}`);
+      setStickModel(response.data);
+    } catch (error) {
+      console.error("Error fetching stick model details:", error);
+    }
+  };
+
   useEffect(() => {
     if (state && state.stickModel) {
-      // If stickModel is available in the state, set it directly
       setStickModel(state.stickModel);
     } else {
-      // If stickModel is not available in the state, fetch it using the slug
-      const slug = window.location.pathname.split("/")[2]; // Assuming the slug is in the third segment of the URL
-      axios
-        .get(`/api/stickModels/${slug}`)
-        .then((response) => {
-          setStickModel(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching stick model details:", error);
-        });
+      const slug = window.location.pathname.split("/")[2];
+      fetchStickModel(slug);
     }
   }, [state]);
 
+  const getPriceForStore = (storeName) => {
+    if (stickModel && stickModel.prices) {
+      const storePrice = stickModel.prices.find(
+        (price) => price.store === storeName
+      );
+
+      if (
+        storePrice &&
+        typeof storePrice.price === "number" &&
+        !isNaN(storePrice.price)
+      ) {
+        console.log(`Price for ${storeName}:`, storePrice.price);
+        return `$${storePrice.price.toFixed(2)}`;
+      } else {
+        console.warn(`Invalid price for ${storeName}:`, storePrice.price);
+        return "N/A";
+      }
+    }
+
+    return "N/A";
+  };
+
   if (!stickModel) {
-    // Handle loading or invalid stick model data
     return <div>Loading stick model data...</div>;
   }
 
-  const { Brand, ModelName, KickPointID, image } = stickModel;
-
+  const { Brand, ModelName, KickPoint, image, prices } = stickModel;
 
   return (
     <>
@@ -48,7 +68,6 @@ const StickDetail = () => {
         <h1>
           {Brand ? `${Brand.BrandName} ${ModelName}` : "Unknown Stick Model"}
         </h1>
-        <p>Kickpoint: {KickPointID}</p>
         {image && (
           <img
             src={image}
@@ -56,7 +75,34 @@ const StickDetail = () => {
             style={{ width: "300px", height: "auto" }}
           />
         )}
-        {/* Add more details as needed */}
+        <h3>Specs:</h3>
+        <p>Kickpoint: {KickPoint?.KickPointName || "N/A"}</p>
+        <p>Available Patterns:</p>
+        <h3>Pricing:</h3>
+        <p>
+          Pure Hockey Price: $
+          {stickModel?.prices
+            ?.find((price) => price.store === "PureHockey")
+            ?.price?.toFixed(2) || "N/A"}
+        </p>
+        <p>
+          Hockey Monkey Price: $
+          {stickModel?.prices
+            ?.find((price) => price.store === "HockeyMonkey")
+            ?.price?.toFixed(2) || "N/A"}
+        </p>
+        <p>
+          Ice Warehouse Price: $
+          {stickModel?.prices
+            ?.find((price) => price.store === "IceWarehouse")
+            ?.price?.toFixed(2) || "N/A"}
+        </p>
+        <p>
+          Hockey World Price: $
+          {stickModel?.prices
+            ?.find((price) => price.store === "HockeyWorld")
+            ?.price?.toFixed(2) || "N/A"}
+        </p>
       </div>
     </>
   );
