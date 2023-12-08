@@ -24,14 +24,14 @@ const main = async () => {
     data: {
       BrandName: "Bauer",
       avatar:
-        "https://img.inlinewarehouse.com/graphics-resizer/logos/BAUER.svg",
+        "https://www.bauer.com/cdn/shop/files/Type_Horizontal_Theme_White_200x.png?v=1652171570",
     },
   });
 
   const brandCCM = await prisma.brand.create({
     data: {
       BrandName: "CCM",
-      avatar: "https://img.inlinewarehouse.com/graphics-resizer/logos/CCM.svg",
+      avatar: "https://s3.amazonaws.com/jebbit-assets/images/QH952pvQ/business-images/5mnCYz1FToGL0Xu1d5tg_2022CCM_Logo_Hor_EN_1_copy.jpg",
     },
   });
 
@@ -39,7 +39,7 @@ const main = async () => {
     data: {
       BrandName: "Warrior",
       avatar:
-        "https://img.inlinewarehouse.com/graphics-resizer/logos/WARRIOR.svg",
+        "https://www.eliteleague.co.uk/image?file=photo/article/article_2469.jpg&w=1540&h=1078&exact=1&topcut=1",
     },
   });
 
@@ -47,7 +47,7 @@ const main = async () => {
     data: {
       BrandName: "True",
       avatar:
-        "https://img.inlinewarehouse.com/graphics-resizer/logos/TRUEHOCKEY.svg",
+        "https://service.xesto.io/widget_embed/truelogo.png",
     },
   });
 
@@ -55,7 +55,7 @@ const main = async () => {
     data: {
       BrandName: "Sherwood",
       avatar:
-        "https://img.inlinewarehouse.com/graphics-resizer/logos/SHERWOOD.svg",
+        "https://sherwoodhockey.com/cdn/shop/files/Sherwood_Monogram_black_50x.png?v=1613757698",
     },
   });
 
@@ -740,7 +740,7 @@ const main = async () => {
   //// CCM MODELS (ID:2)
   const jetSpeedModel = await prisma.model.create({
     data: {
-      ModelName: "JetSpeed",
+      ModelName: "JetSpeed FT6 Pro",
       Brand: {
         connect: {
           BrandID: 2,
@@ -752,6 +752,30 @@ const main = async () => {
         },
       },
       image: "https://www.hockeymonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/c/c/ccm-hockey-stick-jetspeed-ft6-pro-sr.jpg",
+      prices: {
+        create: [
+          {
+            store: "PureHockey",
+            price: 349.99,
+            url: "https://www.purehockey.com/product/ccm-jetspeed-ft6-pro-grip-composite-hockey-stick-senior/itm/57173-41/",
+          },
+          {
+            store: "HockeyMonkey",
+            price: 349.99,
+            url: "https://www.hockeymonkey.com/ccm-hockey-stick-jetspeed-ft6-pro-sr.html",
+          },
+          {
+            store: "IceWarehouse",
+            price: 349.99,
+            url: "https://www.icewarehouse.com/CCM_Jetspeed_FT6_Pro_Grip/descpage-JFT6P.html",
+          },
+          {
+            store: "HockeyWorld",
+            price: 349.99,
+            url: "https://www.hockeyworld.com/CCM-Jetspeed-FT6-Pro-Hockey-Stick-Sr",
+          },
+        ],
+      },
     },
   });
 
@@ -958,5 +982,8 @@ const main = async () => {
     },
   });
 };
+
+//// PRICES AND STORES
+
 
 main();

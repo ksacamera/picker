@@ -26,3 +26,7 @@ const updateSticks = async () => {
 };
 
 updateSticks();
+
+
+// use - node updateSticks.js
+// Must be done anytime seed:dev is run in order to have URL not read "null"
